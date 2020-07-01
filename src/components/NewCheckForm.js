@@ -2,13 +2,17 @@ import React, { useContext, useState } from 'react'
 import { CheckContext } from '../contexts/CheckContext'
 
 const NewCheckForm = () => {
-    const { addCheck } = useContext(CheckContext);
+    const { dispatch } = useContext(CheckContext);
     const [category, setCategory] = useState('');
     const [productName, setProductName] = useState('');
     const [price, setPrice] = useState('');
     const handleSubmit = (e) => {
         e.preventDefault();
-        addCheck(category, productName, price);
+        dispatch({
+            type:'ADD_CHECK', check:{
+                category, productName, price
+            }
+        })
         setCategory(''); setProductName(''); setPrice('');
     }
     return (

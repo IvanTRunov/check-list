@@ -1,22 +1,12 @@
-import React, { useState, createContext } from 'react'
-import { v1 as uuidv1 } from 'uuid'
+import React, { useReducer, createContext } from 'react'
+import {CheckReducer} from '../reducers/CheckReducer'
 
 export const CheckContext = createContext()
 
 const CheckContextProvider = (props) => {
-
-    const [checks, setChecks] = useState([
-        { id: 1, category: 'product', productName: 'milk', price: 2.99 },
-        { id: 2, category: 'product', productName: 'milk', price: 2.99 }
-    ])
-    const addCheck = (category, productName, price) => {
-        setChecks([...checks, {  category, productName, price, id: uuidv1(), }])
-    }
-    const removeCheck = (id) => {
-        setChecks(checks.filter(check => check.id !== id))
-    }
+    const [checks, dispatch] = useReducer(CheckReducer, [])
     return (
-        <CheckContext.Provider value={{checks, addCheck, removeCheck}}>
+        <CheckContext.Provider value={{checks, dispatch}}>
             {props.children}
         </CheckContext.Provider>
     )
