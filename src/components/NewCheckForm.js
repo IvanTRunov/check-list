@@ -9,7 +9,7 @@ const NewCheckForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch({
-            type:'ADD_CHECK', check:{
+            type: 'ADD_CHECK', check: {
                 category, productName, price
             }
         })

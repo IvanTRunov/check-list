@@ -8,7 +8,7 @@ const CheckList = () => {
         <div className='book-list'>
             <ul>
                 {checks.map(check => {
-                    return ( <CheckDetails check={check} key={check.id} />)
+                    return (<CheckDetails check={check} key={check.id} />)
                 })}
             </ul>
         </div>
